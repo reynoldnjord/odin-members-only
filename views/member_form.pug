@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+	if (!user.member) 
+		form.auth-form(action="/member" method="POST")
+			h2= title 
+			div 
+				label(for="passcode") Enter the Member Passcode: 
+				input#passcode(type="password", name="passcode" required="true")
+				if (passcodeError) 
+					p(style="color: red;") #{passcodeError} 
+				button(type="submit") Submit Passcode
+				
+		if (errors) 
+			p #{errors} 
+		
+	else 
+		div(style="width: auto; margin: 0 auto; text-align: center;")
+			h2 Congrats! You're a member! 
+			a(href="/") Return to Dasboard 

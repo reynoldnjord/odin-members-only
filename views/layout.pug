@@ -1,0 +1,30 @@
+doctype html 
+html 	
+	head 	
+		title= title 
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		meta(name="viewport" content="width=device-width,initial-scale=1.0")
+	body 
+		div.container 
+			nav.navbar 
+				a(href="/").title
+					h3 Dashboard
+				if (!user) 
+					ul 	
+						a(href="/log-in") 
+							li Log In 
+						a(href="/sign-up")
+							li Sign Up 
+				else 
+					ul 
+						a(href="/message")
+							li Create Message 
+						a(href="/member")
+							li Become a Member 
+						a(href="/admin")
+							li Become an Admin 
+						a(href="/log-out")
+							li Log Out 
+				if (user) 
+					p.username-layout User: #{user.username} 
+				block content      
